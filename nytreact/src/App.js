@@ -1,19 +1,26 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Header from "./components/Header/header.js";
+import Input from "./components/Search/input.js"
+import Search from "./components/Search/search.js"
+import Results from "./components/Results/results.js"
+import "./styles/search.css"
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      <div>
+        <Header />
+        <div className="container text-center">
+          <h3>Search</h3>
+          <Input />
+          <Search />
+        </div>
+        <div className="container results text-center">
+          <h3>Results</h3>
+          <Results />
+        </div>
       </div>
+
     );
   }
 }
