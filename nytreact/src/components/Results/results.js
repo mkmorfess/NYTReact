@@ -2,7 +2,10 @@ import React from "react";
 
 const Results = props => (
     <div>
-        <div> {props.title} </div>
+        <div><span>{props.title}</span> {props.snippet} </div>
+        <span>{props.link}</span><a> {props.url} </a>
+        <div><span>{props.text}</span> {props.date} </div>
+        <br />
     </div>
 )
 

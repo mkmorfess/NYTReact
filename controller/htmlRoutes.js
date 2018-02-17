@@ -14,8 +14,8 @@ db.on("error", function(error) {
   console.log("Database Error:", error);
 });
 
-router.get("/", function(req, res){
-	res.send("Works")
+router.get("/api/articles", function(req, res){
+	res.json("Works")
 })
 
 module.exports = router;
