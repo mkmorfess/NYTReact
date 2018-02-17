@@ -17,6 +17,8 @@ db.on("error", function(error) {
 router.post("/api/articles/:id", function(req, res){
   console.log(req.params.id)
   console.log(req.body.title)
+  console.log(req.body.link)
+  console.log(req.body.date)
   res.end();
 })
 

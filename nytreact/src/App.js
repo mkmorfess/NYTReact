@@ -38,8 +38,10 @@ class App extends Component {
     });
   };
 
-  handlePostArticle = (id, title) => {
-    API.postArticles(id, {title: title}).then(res => {
+  handlePostArticle = (id, title, link, date) => {
+    API.postArticles(id, {title: title,
+    link: link,
+  date: date}).then(res => {
       console.log(res.data)}).catch(err => console.log(err))
   }
 
@@ -89,7 +91,7 @@ class App extends Component {
             <Button
               id={articles._id}
               key={articles._id}
-              onClick={() => this.handlePostArticle(articles._id, articles.headline.main)} />
+              onClick={() => this.handlePostArticle(articles._id, articles.headline.main, articles.web_url, articles.pub_date)} />
             </div>
           
 
