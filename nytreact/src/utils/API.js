@@ -7,7 +7,7 @@ export default {
         return axios.get(url + "?q=" + topic + "&?begin_date=" + start + "&?end_date=" + end + key )
     },
 
-    postArticles: () => {
-        return axios.get("/api/articles")
+    postArticles: (id, title) => {
+        return axios.post("/api/articles/" + id, title)
     }
 }

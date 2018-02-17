@@ -14,8 +14,10 @@ db.on("error", function(error) {
   console.log("Database Error:", error);
 });
 
-router.get("/api/articles", function(req, res){
-	res.json("Works")
+router.post("/api/articles/:id", function(req, res){
+  console.log(req.params.id)
+  console.log(req.body.title)
+  res.end();
 })
 
 module.exports = router;

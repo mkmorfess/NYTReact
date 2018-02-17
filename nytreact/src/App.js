@@ -38,9 +38,8 @@ class App extends Component {
     });
   };
 
-  handlePostArticle = event => {
-    event.preventDefault()
-    API.postArticles().then(res => {
+  handlePostArticle = (id, title) => {
+    API.postArticles(id, {title: title}).then(res => {
       console.log(res.data)}).catch(err => console.log(err))
   }
 
@@ -88,8 +87,9 @@ class App extends Component {
             date={articles.pub_date} />
             
             <Button
+              id={articles._id}
               key={articles._id}
-              onClick={this.handlePostArticle} />
+              onClick={() => this.handlePostArticle(articles._id, articles.headline.main)} />
             </div>
           
 
