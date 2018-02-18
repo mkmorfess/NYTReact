@@ -13,5 +13,9 @@ export default {
 
     getSaves: () => {
         return axios.get("/api/articles/")
+    },
+
+    deleteArticles: (id) => {
+        return axios.delete("/api/articles/" + id)
     }
 }

@@ -40,17 +40,33 @@ class App extends Component {
     });
   };
 
+  handleDeleteArticle = id => {
+    API.deleteArticles(id).then(res => console.log(res.data))
+
+    API.getSaves().then(res => {
+      this.setState({ saves: res.data })
+      console.log(res.data)
+    })
+      .catch(err => console.log(err))
+  }
+
   handlePostArticle = (id, title, link, date) => {
     API.postArticles(id, {title: title,
     link: link,
   date: date}).then(res => {
       console.log(res.data)}).catch(err => console.log(err))
+
+    API.getSaves().then(res => {
+      this.setState({ saves: res.data })
+      console.log(res.data)
+    })
+      .catch(err => console.log(err))
   }
 
   componentDidMount() {
     
     API.getSaves().then(res => {this.setState({saves: res.data})
-    console.log(res.date)})
+    console.log(res.data)})
   .catch(err => console.log(err))
 
   }
@@ -73,13 +89,13 @@ class App extends Component {
             onChange={this.handleInputChange}
             value={this.state.startYear}
             name="startYear"
-            label="Start Year"
+            label="Start Year (YYYYMMDD)"
           />
           <Input
             onChange={this.handleInputChange}
             value={this.state.endYear}
             name="endYear"
-            label="End Year"
+            label="End Year (YYYYMMDD)"
           />
           <Search 
           onClick={this.handleFormSubmit}/>
@@ -101,6 +117,7 @@ class App extends Component {
             <Button
               id={articles._id}
               key={articles._id}
+              name="Save"
               onClick={() => this.handlePostArticle(articles._id, articles.headline.main, articles.web_url, articles.pub_date)} />
             </div>
           
@@ -111,7 +128,22 @@ class App extends Component {
         </div>
         <div className="container text-center">
           <h3>Saves</h3>
-         
+          {(this.state.saves) ? this.state.saves.map(saves => ( 
+            <div>
+              <Saves
+                key={saves._id}
+                title="Title: "
+                link="Link: "
+                text="Date: "
+                snippet={saves.title}
+                url={saves.url}
+                date={saves.date} />
+                <Button 
+                key={saves._id}
+                name="Delete"
+                onClick={() => this.handleDeleteArticle(saves._id)}/>
+              </div>
+           )) : <div>No Saves</div> }
         </div>
       </div>
     )

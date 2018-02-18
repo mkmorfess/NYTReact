@@ -19,7 +19,7 @@ router.post("/api/articles/:id", function(req, res){
     title: req.body.title,
     url: req.body.link,
     date: req.body.date
-  }).then(function(err, data){
+  }, function(err, data){
     if (err) {
       console.log(err)
     } else {
@@ -30,14 +30,25 @@ router.post("/api/articles/:id", function(req, res){
 })
 
 router.get("/api/articles/", function(req, res){
-  db.find({}).then(function(err, data){
+  db.find({}, function(err, data){
     if (err) {
-      console.log(err)
+      console.log("This is an error: " + err)
     } else {
       res.json(data)
     }
   })
   
+})
+
+router.delete("/api/articles/:id", function(req, res){
+  db.findByIdAndRemove({_id: req.params.id}, function(err, data){
+    if (err) {
+      console.log(err)
+    }
+    else {
+      res.json(data)
+    }
+  })
 })
 
 module.exports = router;
