@@ -4,6 +4,7 @@ import Input from "./components/Search/input.js"
 import Search from "./components/Search/search.js"
 import Results from "./components/Results/results.js"
 import Button from "./components/Button/button.js"
+import Saves from "./components/Saves/saves.js"
 import API from "./utils/API.js"
 import "./styles/search.css"
 
@@ -11,6 +12,7 @@ class App extends Component {
 
   state = {
     article: [],
+    saves: [],
     topic: "",
     startYear: "",
     endYear: ""
@@ -43,6 +45,14 @@ class App extends Component {
     link: link,
   date: date}).then(res => {
       console.log(res.data)}).catch(err => console.log(err))
+  }
+
+  componentDidMount() {
+    
+    API.getSaves().then(res => {this.setState({saves: res.data})
+    console.log(res.date)})
+  .catch(err => console.log(err))
+
   }
 
   render() {
@@ -98,6 +108,10 @@ class App extends Component {
             )) : 
                   
           <p>No Results.</p>}         
+        </div>
+        <div className="container text-center">
+          <h3>Saves</h3>
+         
         </div>
       </div>
     )

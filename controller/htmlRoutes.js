@@ -3,7 +3,7 @@ const router = express.Router();
 
 const mongoose = require("mongoose");
 
-const databaseUrl = process.env.MONGODB_URI ||'mongodb://localhost:27017/drawings';
+const databaseUrl = process.env.MONGODB_URI ||'mongodb://localhost:27017/Articles';
 
 mongoose.Promise = Promise;
 mongoose.connect(databaseUrl);
@@ -15,11 +15,29 @@ db.on("error", function(error) {
 });
 
 router.post("/api/articles/:id", function(req, res){
-  console.log(req.params.id)
-  console.log(req.body.title)
-  console.log(req.body.link)
-  console.log(req.body.date)
-  res.end();
+  db.create({
+    title: req.body.title,
+    url: req.body.link,
+    date: req.body.date
+  }).then(function(err, data){
+    if (err) {
+      console.log(err)
+    } else {
+      res.json(data)
+    }
+  })
+  
+})
+
+router.get("/api/articles/", function(req, res){
+  db.find({}).then(function(err, data){
+    if (err) {
+      console.log(err)
+    } else {
+      res.json(data)
+    }
+  })
+  
 })
 
 module.exports = router;

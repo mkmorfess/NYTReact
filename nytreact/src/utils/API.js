@@ -9,5 +9,9 @@ export default {
 
     postArticles: (id, title) => {
         return axios.post("/api/articles/" + id, title)
+    },
+
+    getSaves: () => {
+        return axios.get("/api/articles/")
     }
 }
