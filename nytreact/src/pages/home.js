@@ -89,7 +89,8 @@ class Home extends Component {
     
                { this.state.articles.map(articles => (
                 
-                <div> 
+                <div>
+                    <hr />
                     <Results 
                     key={articles._id}
                     title="Title: "
