@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Results from "./../components/Results/results.js"
 import Button from "./../components/Button/button.js"
 import Saves from "./../components/Saves/saves.js"
 import API from "./../utils/API.js"
