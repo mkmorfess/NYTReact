@@ -1,7 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const path = require("path")
-var routes = require("./controller/htmlRoutes.js")
+const routes = require("./controller/htmlRoutes.js")
 
 
 // Init App
@@ -18,7 +18,7 @@ app.use(bodyParser.json())
 app.use("/", routes)
 
 app.get("*", function(req, res) {
-	res.sendFile(path.join(__dirname, "./nytreact/build/index.html"));
+	res.sendFile(path.join(__dirname, "./nytreact/public/index.html"));
 });
 
 app.listen(PORT, function(){
