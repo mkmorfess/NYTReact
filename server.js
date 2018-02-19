@@ -17,6 +17,10 @@ app.use(bodyParser.json())
 
 app.use("/", routes)
 
+app.get("*", function(req, res) {
+	res.sendFile(path.join(__dirname, "./nytreact/build/index.html"));
+});
+
 app.listen(PORT, function(){
 	console.log("Server Running on port: " + PORT)
 })
