@@ -41,7 +41,8 @@ class Home extends Component {
         API.postArticles(id, {title: title,
         link: link,
       date: date}).then(res => {
-          console.log(res.data)}).catch(err => console.log(err))
+          console.log(res.data)
+        alert("Article Saved")}).catch(err => console.log(err))
     
         API.getSaves().then(res => {
           this.setState({ saves: res.data })

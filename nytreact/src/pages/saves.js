@@ -12,8 +12,12 @@ class SavedPage extends Component {
 
 
     handleDeleteArticle = id => {
-        API.deleteArticles(id).then(res => console.log(res.data))
-    
+        
+        API.deleteArticles(id).then(res => {console.log(res.data)
+            this.setState({ saves: [] })
+            alert("Article Deleted")
+        }).catch(err => console.log(err))
+        
         API.getSaves().then(res => {
           this.setState({ saves: res.data })
           console.log(res.data)
