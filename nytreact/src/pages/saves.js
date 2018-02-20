@@ -40,10 +40,12 @@ class SavedPage extends Component {
         return (
             <div>
                 <div className="container text-center">
-                <h3>Saves</h3>
-                <hr />
+                    <div className="results">
+                        <h3>Saves</h3>
+                        <hr />
+                    </div>
                 {(this.state.saves.length > 0) ? this.state.saves.map(saves => ( 
-                    <div>
+                    <div className="saves">
                     <Saves
                         key={saves._id}
                         title="Title: "
@@ -57,7 +59,7 @@ class SavedPage extends Component {
                         name="Delete"
                         onClick={() => this.handleDeleteArticle(saves._id)}/>
                     </div>
-                )) : <div>No Saves</div> }
+                )) : <div className="saves"><strong>No Saves. Search for articles <a href="/">here</a></strong></div> }
                 </div>
             </div>
             

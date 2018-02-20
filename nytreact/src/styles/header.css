@@ -1,5 +1,7 @@
 .jumbotron {
-    background-color: rgba(0,0,0,0.7);
+    background-image: url("./images/background.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% 700px;
     color: rgba(255,255,255,0.9);
     text-shadow: 2px 2px 2px black;
     border-bottom: 3px solid black;

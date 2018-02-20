@@ -5,6 +5,7 @@ import Search from "./../components/Search/search.js"
 import Results from "./../components/Results/results.js"
 import Button from "./../components/Button/button.js"
 import API from "./../utils/API.js"
+import "./../styles/search.css";
 
 class Home extends Component {
 
@@ -58,8 +59,8 @@ class Home extends Component {
             <div>
                 <Header />
                     <div className="container text-center">
-                        <h3>Search</h3>
-                        <hr />
+                            <h3>Search</h3>
+                            <hr />
                         <Input 
                         onChange={this.handleInputChange}
                         value={this.state.topic}
@@ -85,7 +86,7 @@ class Home extends Component {
                       
             { (this.state.articles) ? 
 
-            <div className="container results text-center">
+            <div className="container text-center">
                 <h3>Results</h3>
     
                { this.state.articles.map(articles => (
