@@ -1,15 +1,16 @@
 import React from "react";
+import { Link } from "react-router-dom"
 
 const Nav = () =>
   <nav className="navbar navbar-inverse navbar-top">
     <div className="container-fluid">
       <div className="navbar-header">
-        <a href="/" className="navbar-brand">
+        <Link to="/" className="navbar-brand">
           Home/Search
-        </a>
-        <a href="/saves" className="navbar-brand">
+        </Link>
+        <Link to="/saves" className="navbar-brand">
           Saves
-        </a>
+        </Link>
       </div>
     </div>
   </nav>;
