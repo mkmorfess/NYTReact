@@ -17,7 +17,7 @@ app.use(bodyParser.json())
 
 app.use("/", routes)
 
-app.use(express.static("build"))
+app.use(express.static("nytreact/build"))
 
 app.get("/", function(req, res) {
 	res.sendFile(path.join(__dirname, "./nytreact/build/index.html"));
