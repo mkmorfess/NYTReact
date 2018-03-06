@@ -19,7 +19,7 @@ class Home extends Component {
     handleFormSubmit = event => {
         event.preventDefault();
         if (this.state.topic && this.state.startYear && this.state.endYear) {
-            this.setState({articles: []})
+            this.setState({ article: [] })
           API.getArticles(this.state.topic, this.state.startYear, this.state.endYear)
             .then(res => {
               this.setState({articles: res.data.response.docs})
