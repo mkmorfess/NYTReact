@@ -90,7 +90,7 @@ class Home extends Component {
 
             <div className="container text-center">
                 <h3>Results</h3>
-    
+                <hr />
                { this.state.articles.map(articles => (
                 
                 <div>
