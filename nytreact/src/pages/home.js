@@ -10,7 +10,7 @@ import "./../styles/search.css";
 class Home extends Component {
 
     state = {
-        article: [],
+        articles: [],
         topic: "",
         startYear: "",
         endYear: ""
@@ -18,8 +18,9 @@ class Home extends Component {
 
     handleFormSubmit = event => {
         event.preventDefault();
+        this.setState({ articles: [] })
         if (this.state.topic && this.state.startYear && this.state.endYear) {
-            this.setState({ article: [] })
+            
           API.getArticles(this.state.topic, this.state.startYear, this.state.endYear)
             .then(res => {
               this.setState({articles: res.data.response.docs})
@@ -85,7 +86,7 @@ class Home extends Component {
                         onClick={this.handleFormSubmit}/>
                     </div>
                       
-            { (this.state.articles) ? 
+            { (this.state.articles.length > 0) ? 
 
             <div className="container text-center">
                 <h3>Results</h3>
